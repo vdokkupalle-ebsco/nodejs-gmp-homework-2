@@ -37,7 +37,7 @@ export default class UserController {
         message: "User successfully created",
       });
     } catch (e) {
-      res.status(500).send(e.message);
+      res.status(400).send(e.message);
     }
   }
   update(req, res) {
@@ -53,7 +53,7 @@ export default class UserController {
         message: "User is successfully updated",
       });
     } catch (e) {
-      res.status(500).send(e.message);
+      res.status(400).send(e.message);
     }
   }
   delete(req, res) {
@@ -69,7 +69,7 @@ export default class UserController {
         message: "User is successfully deleted",
       });
     } catch (e) {
-      res.status(500).send(e.message);
+      res.status(400).send(e.message);
     }
   }
   get(req, res) {
@@ -88,7 +88,7 @@ export default class UserController {
         users,
       });
     } catch (e) {
-      res.status(500).send(e.message);
+      res.status(400).send(e.message);
     }
   }
 }
