@@ -79,8 +79,8 @@ export default class UserController {
         throw new Error("query should be a string.");
       }
 
-      if(limit && typeof limit !== 'number'){
-          throw new Error('limit should be a number')
+      if (limit && typeof limit !== "number") {
+        throw new Error("limit should be a number");
       }
 
       const users = this.service.getUsers(query, limit);
