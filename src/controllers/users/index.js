@@ -60,9 +60,7 @@ export default class UserController {
         const { id } = req.params;
         try {
             if (typeof id === 'undefined') {
-                if (typeof id === 'undefined') {
-                    throw new Error('id is required');
-                }
+                throw new Error('id is required');
             }
             this.service.deleteUser(id);
             res.json({
