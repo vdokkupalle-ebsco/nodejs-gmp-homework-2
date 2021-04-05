@@ -44,7 +44,7 @@ export default class UserController {
         const { id } = req.params;
         const { login, age, password } = req.body;
         try {
-            if (typeof id === 'undefined') {
+            if (id === undefined) {
                 throw new Error('id is required');
             }
             const userId = this.service.updateUser(id, login, age, password);
@@ -59,7 +59,7 @@ export default class UserController {
     delete(req, res) {
         const { id } = req.params;
         try {
-            if (typeof id === 'undefined') {
+            if (id === undefined) {
                 throw new Error('id is required');
             }
             this.service.deleteUser(id);
