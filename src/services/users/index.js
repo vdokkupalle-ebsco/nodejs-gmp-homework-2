@@ -1,11 +1,6 @@
 import errors from '../../errors';
 import { User } from '../../models/user';
 import { v4 as uuid } from 'uuid';
-import {
-    validateAge,
-    validateLogin,
-    validatePassword
-} from '../../validations';
 
 export default class UserService {
     constructor() {
@@ -40,24 +35,12 @@ export default class UserService {
             throw new Error(errors.loginAlreadyExisting(userLogin));
         }
         if (userLogin) {
-            const loginValidator = validateLogin(userLogin);
-            if (!loginValidator.valid) {
-                throw new Error(loginValidator.message);
-            }
             userObject.login = userLogin;
         }
         if (userPassword) {
-            const passwordValidator = validatePassword(userPassword);
-            if (!passwordValidator.valid) {
-                throw new Error(passwordValidator.message);
-            }
             userObject.password = userPassword;
         }
         if (userAge) {
-            const ageValidator = validateAge(userAge);
-            if (!ageValidator.valid) {
-                throw new Error(ageValidator.message);
-            }
             userObject.userAge = userAge;
         }
     }
@@ -71,7 +54,7 @@ export default class UserService {
     }
 
     getUsers(query, limit) {
-        /* eslint-disable no-unused-vars */
+    /* eslint-disable no-unused-vars */
         let users = this.users
             .filter(({ login, isDeleted }) => !isDeleted && login.indexOf(query) > -1)
             .map(({ password, isDeleted, ...sanitizedUser }) => sanitizedUser);
